@@ -1,6 +1,7 @@
 package example.weather;
 
 import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
+import au.com.dius.pact.consumer.junit.MockServerConfig;
 import au.com.dius.pact.consumer.junit5.PactConsumerTestExt;
 import au.com.dius.pact.consumer.junit5.PactTestFor;
 import au.com.dius.pact.core.model.PactSpecVersion;
@@ -18,7 +19,8 @@ import static org.hamcrest.Matchers.is;
 
 @SpringBootTest
 @ExtendWith(PactConsumerTestExt.class)
-@PactTestFor(providerName = "weather_provider", port = "8089", pactVersion = PactSpecVersion.V3)
+@PactTestFor(providerName = "weather_provider", pactVersion = PactSpecVersion.V3)
+@MockServerConfig(hostInterface = "localhost", port = "8089")
 public class WeatherClientConsumerTest {
 
     @Autowired

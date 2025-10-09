@@ -31,6 +31,7 @@ public class WeatherClient {
         try {
             return Optional.ofNullable(restTemplate.getForObject(url, WeatherResponse.class));
         } catch (RestClientException e) {
+            System.err.println(e.getMessage());
             return Optional.empty();
         }
     }
